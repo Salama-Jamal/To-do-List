@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getDatabase,
                 ref, 
-                push} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+                push,
+            onValue} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
 
 
 
@@ -19,7 +20,9 @@ const newTaskInput = document.getElementById('new-task')
 const addCompletedButton = document.getElementById('add-completed')
 const taskList = document.createElement('ul')
 
-
+onValue(tasksRef, function(snapshot){
+    console.log(snapshot.val())
+})
 
 
 addCompletedButton.addEventListener("click", function() {
